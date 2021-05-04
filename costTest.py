@@ -108,8 +108,8 @@ def Cost_GA(data_size):
 
     # print("Best solution : ", new_population[best_match_idx, :])
     # print("Best solution fitness : ", fitness[best_match_idx])
-    print 'best solution', best_solutions
-    print 'GA complete'
+    print ('best solution', best_solutions)
+    print ('GA complete')
     return best_solutions[0,0]
     # print("best outputs", best_outputs)
 
