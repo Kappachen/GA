@@ -60,7 +60,7 @@ def Performance_GA(data_size, ceph_sw, ceph_sr):
             best_solutionsinx = numpy.where(fitness == best_outputs)
             best_solutions = new_population[best_solutionsinx, :]
             # The best result in the current iteration.
-            print best_solutions
+            print (best_solutions)
             print("Best result : ", numpy.min(fitness))
 
         # Selecting the best parents in the population for mating.
@@ -104,8 +104,8 @@ def Performance_GA(data_size, ceph_sw, ceph_sr):
 
     # print("Best solution : ", new_population[best_match_idx, :])
     # print("Best solution fitness : ", fitness[best_match_idx])
-    print "best solution",best_solutions
-    print 'GA complete'
+    print ("best solution",best_solutions)
+    print ('GA complete')
     return best_solutions[0,0]
     # print("best outputs", best_outputs)
     # print("history fitness", min(history_best))

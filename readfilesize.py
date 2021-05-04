@@ -4,6 +4,7 @@ from os.path import getsize
 import Test_GeneticAlgorithm
 import costTest
 import sys, getopt
+import os
 
 def main(argv):
    inputfile = ''
@@ -22,9 +23,9 @@ def main(argv):
             size = getsize(inputfile)
        elif opt in ('-s', '--strategy'):
             strategy = arg
-   print 'inputfile name :', inputfile
-   print 'file size :', size    #取得資料大小（bytes）
-   print 'user_stategy : ', strategy #獲取使用者決策
+   print ('inputfile name :', inputfile)
+   print ('file size :', size)    #取得資料大小（bytes）
+   print ('user_stategy : ', strategy) #獲取使用者決策
    if strategy == '1' :
         Ec_results = Test_GeneticAlgorithm.Performance_GA(size, 47.3983503, 79.1313117) #效能
    elif strategy == '0' :
@@ -36,9 +37,9 @@ def main(argv):
    m = Ec_results[1]
    # 將計算結果部署到ceph中
     # 建立ECP
-    # ceph osd erasure-code-profile set myprofile k=k m=m ruleset-failure-domain=rack
+   os.system("ceph osd erasure-code-profile set myprofile k=%d m=%d ruleset-failure-domain=rack" % (k,m))
     # # 建立一個自己設定的profile
-    # ceph osd pool create ecpool 12 12 erasure <myprofile>
+   os.system("ceph osd pool create ecpool 12 12 erasure <myprofile>")
 
 
 if __name__ == "__main__":
