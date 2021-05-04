@@ -37,7 +37,7 @@ def main(argv):
    m = Ec_results[1]
    # 將計算結果部署到ceph中
     # 建立ECP
-   os.system("ceph osd erasure-code-profile set myprofile k=%d m=%d ruleset-failure-domain=rack" % (k,m))
+   os.system("ceph osd erasure-code-profile set myprofile k=%d m=%d crush-failure-domain=rack" % (k,m))
     # # 建立一個自己設定的profile
    os.system("ceph osd pool create ecpool 12 12 erasure <myprofile>")
 
